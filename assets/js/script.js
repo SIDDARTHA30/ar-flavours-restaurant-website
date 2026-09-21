@@ -203,6 +203,7 @@ const menuSearch = select('#menu-search');
 const menuEmpty = select('[data-menu-empty]');
 const indicatorLabels = { veg: 'Veg', nonveg: 'Non-veg', egg: 'Egg' };
 let activeMenuCategory = 'All';
+let openMenuCategory = null;
 
 const renderMenu = () => {
   if (!menuList) return;
@@ -217,24 +218,46 @@ const renderMenu = () => {
       || `${name} ${price} ${category.name}`.toLowerCase().includes(query) || type.includes(query))
   })).filter((category) => category.items.length);
 
-  menuList.innerHTML = visibleCategories.map((category) => `
-    <details class="menu-category" open>
-      <summary><span><small>${String(category.index + 1).padStart(2, '0')}</small>${category.name}</span><ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+  menuList.innerHTML = visibleCategories.map((category) => {
+    const categoryId = `menu-category-${category.index}`;
+    const panelId = `${categoryId}-panel`;
+    const isOpen = openMenuCategory === category.index;
+    return `
+    <section class="menu-category${isOpen ? ' is-open' : ''}" data-menu-section="${category.index}">
+      <button class="menu-category-toggle" type="button" aria-expanded="${isOpen}" aria-controls="${panelId}" id="${categoryId}">
+        <span><small>${String(category.index + 1).padStart(2, '0')}</small>${category.name}</span>
+        <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+      </button>
+      <div class="menu-category-panel" id="${panelId}" role="region" aria-labelledby="${categoryId}" aria-hidden="${!isOpen}">
+        <div class="menu-category-panel-inner">
       ${category.notice ? `<p class="category-notice">${category.notice}</p>` : ''}
       <div class="menu-items">${category.items.map(([name, price, type]) => `
         <article class="menu-item">
           <div class="menu-item-name"><span class="food-dot ${type}" aria-label="${indicatorLabels[type] || 'Item type not specified'}"></span><h3>${name}</h3>${type ? `<span class="food-label ${type}">${indicatorLabels[type]}</span>` : ''}</div>
           <span class="menu-item-rule"></span><strong class="${price.includes('confirm') || price.includes('Please') ? 'price-confirm' : ''}">${price}</strong>
         </article>`).join('')}</div>
-    </details>`).join('');
+        </div>
+      </div>
+    </section>`;
+  }).join('');
   menuEmpty.hidden = visibleCategories.length > 0;
 };
+
+on(menuList, 'click', (event) => {
+  const toggle = event.target.closest('.menu-category-toggle');
+  if (!toggle) return;
+  const section = toggle.closest('.menu-category');
+  const categoryIndex = Number(section.dataset.menuSection);
+  openMenuCategory = openMenuCategory === categoryIndex ? null : categoryIndex;
+  renderMenu();
+});
 
 if (menuFilters) {
   menuFilters.innerHTML = ['All', ...menuCategories.map(({ name }) => name)].map((name) =>
     `<button type="button" class="${name === 'All' ? 'active' : ''}" data-menu-category="${name}">${name}</button>`).join('');
   selectAll('[data-menu-category]').forEach((button) => on(button, 'click', () => {
     activeMenuCategory = button.dataset.menuCategory;
+    openMenuCategory = null;
     selectAll('[data-menu-category]').forEach((item) => item.classList.toggle('active', item === button));
     renderMenu();
   }));
