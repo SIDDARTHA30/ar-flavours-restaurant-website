@@ -1,54 +1,29 @@
-<div align="center">
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/grilli)
-  ![GitHub stars](https://img.shields.io/github/stars/codewithsadee/grilli?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/codewithsadee/grilli?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-  [![YouTube Video Views](https://img.shields.io/youtube/views/CjVGp5kGHxA?style=social)](https://youtu.be/CjVGp5kGHxA)
+# AR Flavours Restaurant Website
 
-  <br />
-  <br />
+A modern and responsive restaurant promotional website developed for AR Flavours Restaurant, located in Kothapet, Hyderabad.
 
-  <h2 align="center">Grilli - Restaurant Website</h2>
+## Features
 
-  Grilli is a fully responsive restaurant website, <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
+- Modern restaurant landing page
+- Complete digital food menu
+- Menu category filters
+- Food search functionality
+- Responsive design for mobile and desktop
+- Restaurant information and location
+- Interactive navigation
+- Attractive food-focused UI
 
-  <a href="https://codewithsadee.github.io/grilli/"><strong>➥ Live Demo</strong></a>
+## Technologies Used
 
-</div>
+- HTML5
+- CSS3
+- JavaScript
+- Responsive Web Design
 
-<br />
+## Purpose
 
-### Demo Screeshots
+This is a personal web development project created to practice frontend development, UI/UX design, and interactive website development.
 
-![Grilli Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+## Disclaimer
 
-### Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
-
-### Run Locally
-
-To run **Grilli** locally, run this command on your git bash:
-
-Linux and macOS:
-
-```bash
-sudo git clone https://github.com/codewithsadee/grilli.git
-```
-
-Windows:
-
-```bash
-git clone https://github.com/codewithsadee/grilli.git
-```
-
-### Contact
-
-If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
-
-### License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+Restaurant details, menu items, and prices should be verified with AR Flavours before production use.
