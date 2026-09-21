@@ -44,6 +44,7 @@ address { font-style: normal; }
 .header-inner { align-items: center; display: flex; justify-content: space-between; }
 .brand { align-items: center; display: inline-flex; font-size: 1.9rem; gap: 10px; letter-spacing: -.03em; }
 .brand strong { font-weight: 700; }
+.brand-logo { display: block; height: 58px; object-fit: contain; width: 58px; }
 .brand-symbol { align-items: center; border: 1px solid var(--saffron); color: var(--saffron-dark); display: inline-flex; font: 700 1.3rem/1 var(--heading); height: 35px; justify-content: center; letter-spacing: .04em; width: 35px; }
 .navbar-list { display: flex; gap: clamp(22px, 3vw, 42px); }
 .navbar-link { color: var(--ink-soft); font-size: 1.4rem; font-weight: 600; position: relative; }
@@ -157,7 +158,6 @@ h2 em { color: var(--saffron-dark); }
 .footer { background: var(--ink); color: var(--white); padding-top: 70px; }
 .footer-top { display: grid; gap: 35px; grid-template-columns: 1.3fr 1fr 1fr 1.2fr; padding-bottom: 65px; }
 .footer-brand { align-self: start; color: var(--white); }
-.footer-brand .brand-symbol { color: #f0b06b; }
 .footer-tagline { color: #bdcbc2; font: 2rem var(--heading); margin: 5px 0 0; }
 .footer-links { display: flex; gap: 55px; }
 .footer-links > div { display: flex; flex-direction: column; gap: 9px; }
@@ -279,6 +279,7 @@ h2 em { color: var(--saffron-dark); }
   .footer-links { gap: 45px; }
   .footer-location { width: 100%; }
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 9px; }
+  .brand-logo { height: 46px; width: 46px; }
   .menu-category-toggle { font-size: 2.2rem; padding: 19px 17px; }
   .menu-category-toggle > span { gap: 11px; }
   .menu-category-toggle small { font-size: 1rem; }
